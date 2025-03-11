@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import React, { useState } from 'react'
 import './App.css';
+import axios from 'axios'
 
 function App() {
+    const [ data, setData ] = useState('');
+    const [ symbol, setSymbol ] = useState('');
+
+    const getData = async () => {
+        console.log(symbol);
+        const url = 'http://localhost:4999/get';
+        const params = {
+            symbol: symbol,
+        }
+        try {
+            const response = await axios.get(url, {params});
+            setData(JSON.stringify(response.data));
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    const onSymbolChange = (symbol) => {
+        setSymbol(symbol.target.value);
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello World</h1>
+        <input type="text" value={symbol} onChange={onSymbolChange}/>
+        <button onClick={getData}>Get Data</button>
+        <p>{data}</p>
     </div>
   );
 }
