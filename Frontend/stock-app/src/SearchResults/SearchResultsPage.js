@@ -12,12 +12,18 @@ export function SearchResultsPage() {
     // const [isDataSet, setIsDataSet] = useState(false);
 
     const svgRef = useRef();
+    const fetchedData = useRef(false);
 
     useEffect( () => {
+        if (fetchedData.current) return;
+
+        fetchedData.current = true;
+
         const fetchData = async () => {
             const url = 'http://localhost:4999/get';
             const params = {
                 symbol: searchParams.query,
+                series: timeSeries,
             }
             try {
                 const response = await axios.get(url, {params});
@@ -85,27 +91,8 @@ export function SearchResultsPage() {
             .style("stroke-width", 2);
     }, [data]);
 
-    // const getData = async () => {
-    //     console.log(symbol);
-    //     const url = 'http://localhost:4999/get';
-    //     const params = {
-    //         symbol: symbol,
-    //     }
-    //     try {
-    //         const response = await axios.get(url, {params});
-    //         const responseData = response.data[`Time Series (${timeSeries})`] // Will change with each type of time series
-    //
-    //         const formattedData = Object.keys(responseData).map(date => ({
-    //           date: new Date(date),
-    //           close: parseFloat(responseData[date]["4. close"]),
-    //         }));
-    //         setData(formattedData.reverse());
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // }
-
     const onClickTimeSeries = (event) => {
+        fetchedData.current = false;
         setTimeSeries(event.target.name);
     }
 

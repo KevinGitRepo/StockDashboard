@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import './SearchPage.css';
+import {debounce} from 'lodash';
+import axios from "axios";
 
 export function SearchPage() {
 
     const [symbol, setSymbol] = useState("");
     // Make this a complete page for searching
+    //
 
     const onSymbolChange = (event) => {
         setSymbol(event.target.value);
