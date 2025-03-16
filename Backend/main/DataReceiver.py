@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-VANTAGE_ALPHA_API_KEY = os.getenv('API_KEY')
+VANTAGE_ALPHA_API_KEY = os.getenv('API_KEY2')
 
 def data_receiver_intraday(symbol, interval):
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={symbol}&interval={interval}&apikey={VANTAGE_ALPHA_API_KEY}'

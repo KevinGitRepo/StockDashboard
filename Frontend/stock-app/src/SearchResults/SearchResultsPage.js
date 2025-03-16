@@ -20,7 +20,7 @@ export function SearchResultsPage() {
         fetchedData.current = true;
 
         const fetchData = async () => {
-            const url = 'http://localhost:4999/get';
+            const url = process.env.API_GET_URL;
             const params = {
                 symbol: searchParams.query,
                 series: timeSeries,
@@ -119,9 +119,6 @@ export function SearchResultsPage() {
                     <h2>Loading stock data...</h2>
                 )}
             </div>
-            <Link to={`/search`}>
-                <button>Back to Search</button>
-            </Link>
         </div>
     )
 }

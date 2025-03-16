@@ -1,0 +1,35 @@
+.outsidehomepagediv {
+    text-align: center;
+}
+
+.homepageh1 {
+    margin: 20px;
+}
+
+.container {
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
+    color: white;
+    justify-items: center;
+}
+
+.companylink {
+    color: transparent;
+}
+
+.box {
+    width: 300px;
+    height: 200px;
+    border: 1px white solid;
+    color: white;
+    margin: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.companytext {
+    color: white;
+}

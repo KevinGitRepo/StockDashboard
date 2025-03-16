@@ -11,19 +11,19 @@ export function SearchPage() {
     // Make this a complete page for searching
 
     useEffect(() => {
-        if(data.length > 0) return;
-        const fetchData = async () => {
-            const url = 'http://localhost:4999/data';
-            try {
-                const response = await axios.get(url);
-
-                setData(response.data);
-            } catch (err) {
-                console.error(err);
-            }
-        }
         fetchData();
-    }, [data.length]);
+    }, []);
+
+    const fetchData = async () => {
+        const url = "http://localhost:4999/data";
+        try {
+            const response = await axios.get(url);
+
+            setData(response.data);
+        } catch (err) {
+            console.error(err);
+        }
+    }
 
     const handleInputChange = (event) => {
         const query = event.target.value.toLowerCase();
@@ -38,6 +38,12 @@ export function SearchPage() {
         } else {
             setSuggestions([]);
         }
+    }
+
+    const handleSuggestionClick = (suggestion) => {
+        let companyInfo = suggestion.target.textContent;
+        setInput(companyInfo.substring(companyInfo.lastIndexOf('(') + 1, companyInfo.length - 1)); // Only grabs the symbol
+        setSuggestions([]);
     }
 
     return (
@@ -55,15 +61,15 @@ export function SearchPage() {
                     <img src="/search.png" alt=""/>
                 </Link>
             </div>
-
-            <ul className="suggestions">
-                {suggestions.map((suggestion, index) => (
-                    <li key={index}>
-                        <strong>{suggestion.name}</strong> ({suggestion.symbol})
-                    </li>
-                ))}
-            </ul>
-
+            <div className="suggestiondiv">
+                <ul className="suggestions">
+                    {suggestions.map((suggestion, index) => (
+                        <li key={index} onClick={handleSuggestionClick}>
+                            {suggestion.name} ({suggestion.symbol})
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }
