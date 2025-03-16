@@ -1,29 +1,30 @@
-/*.searchpage {*/
-/*    color: white;*/
-/*    background-color: white;*/
-/*}*/
+.searchpage {
+    color: white;
+}
 
-/*input, button {*/
-/*    background-color: white;*/
-/*    color: black;*/
-/*}*/
+input, button {
+    background-color: white;
+    color: black;
+}
 
-/*ul {*/
-/*  list-style-type: none;*/
-/*  padding: 0;*/
-/*  margin: 0;*/
-/*  background-color: white;*/
-/*  border: 1px solid #ccc;*/
-/*  position: absolute;*/
-/*  width: 100%;*/
-/*  z-index: 10;*/
-/*}*/
+.suggestions li {
+    list-style: none;
+}
 
-/*li {*/
-/*  padding: 8px;*/
-/*  cursor: pointer;*/
-/*}*/
+.searchdiv {
+    justify-content: center;
+    width: 100%;
+    align-content: center;
+    height: 50px;
+    margin: 10px 0;
+}
 
-/*li:hover {*/
-/*  background-color: #f0f0f0;*/
-/*}*/
+.searchbutton {
+    display: inline-flex;
+}
+
+.searchbar {
+    padding: 6px 12px;
+    height: 100%;
+    width: 75%;
+}

@@ -4,7 +4,7 @@
         align-items: center;
         padding: 20px;
         background-color: transparent;
-        /*color: white;*/
+        color: white;
     }
 
     h1 {
@@ -28,7 +28,7 @@
 
     nav a {
         text-decoration: none;
-        /*color: white;*/
+        color: white;
         font-size: 16px;
         padding: 5px 10px;
     }
